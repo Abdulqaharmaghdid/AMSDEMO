@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — KII Innovation Program</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">KII <span>Innovation Program</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="signup.html" class="btn-nav">Create Account</a>
+  </nav>
+</header>
+
+<div class="page-narrow">
+  <div class="card">
+    <h1>Sign In</h1>
+    <p class="sub">Sign in to continue to your applicant dashboard.</p>
+
+    <div id="alert" class="alert alert-error hidden"></div>
+
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="loginPassword" required>
+      </div>
+      <button type="submit" class="btn btn-block">Sign In</button>
+      <p class="text-center muted mt-2">No account yet? <a href="signup.html">Create one</a></p>
+    </form>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

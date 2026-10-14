@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application — KII Innovation Program</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="side-brand">
+      KII Application
+      <small id="sideApplicant"></small>
+    </div>
+    <ul id="sideNav">
+      <li><a href="dashboard.html"><span class="dot"></span>Home</a></li>
+      <!-- section links injected by application.js -->
+    </ul>
+    <div class="side-foot" id="sideProgress"></div>
+  </aside>
+
+  <main class="app-main">
+    <div class="panel">
+      <div class="app-head">
+        <div class="step-label" id="stepLabel"></div>
+        <h1 id="sectionTitle"></h1>
+        <p class="sub" id="sectionSub"></p>
+      </div>
+      <div id="alert" class="alert alert-error hidden"></div>
+      <div id="sectionBody"></div>
+      <div class="form-actions" id="formActions">
+        <button class="btn btn-secondary" id="backBtn">Back</button>
+        <div class="right">
+          <button class="btn btn-secondary" id="saveBtn">Save &amp; Exit</button>
+          <button class="btn" id="continueBtn">Continue</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<datalist id="countryList"></datalist>
+
+<script src="js/common.js"></script>
+<script src="js/application.js"></script>
+</body>
+</html>

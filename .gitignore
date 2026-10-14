@@ -1,0 +1,9 @@
+# OS / editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+
+# local dev helpers
+.audit-tmp/
+node_modules/

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Sign In — KII AMS</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  body { background: linear-gradient(135deg, #0c3527, #1e6a4d); min-height: 100vh; }
+  .staff-card .badge-role { background:#dcf5e8; color:#15803d; }
+  .staff-logo { text-align:center; margin-bottom: 18px; }
+  .staff-logo .mark {
+    width: 54px; height: 54px; border-radius: 14px; margin: 0 auto 8px;
+    background: linear-gradient(135deg, #4ade80, #16a34a);
+    display: flex; align-items: center; justify-content: center;
+    color:#fff; font-weight:800; font-size:1.1rem;
+  }
+  .staff-logo b { color:#0c3527; font-size:1.05rem; }
+  .staff-logo small { display:block; color:#64748b; font-size:.75rem; }
+</style>
+</head>
+<body>
+<div class="page-narrow">
+  <div class="card staff-card">
+    <div class="staff-logo">
+      <div class="mark">KII</div>
+      <b>Application Management System</b>
+      <small>Administration &amp; Evaluation Team — Staff Sign In</small>
+    </div>
+
+    <div id="alert" class="alert alert-error hidden"></div>
+
+    <form id="staffLoginForm" novalidate>
+      <div class="field">
+        <label>Staff Email</label>
+        <input type="email" id="staffEmail" required>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" id="staffPassword" required>
+      </div>
+      <button type="submit" class="btn btn-block">Sign In to AMS</button>
+      <p class="text-center muted mt-2"><a href="index.html">← Back to applicant portal</a></p>
+    </form>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/ams.js"></script>
+<script>
+  amsInit();
+  if (new URLSearchParams(location.search).get("expired"))
+    setTimeout(() => showAlert("Your session expired after 60 minutes of inactivity. Please sign in again."));
+  function showAlert(msg) {
+    const a = document.getElementById("alert");
+    a.textContent = msg;
+    a.classList.remove("hidden");
+  }
+  document.getElementById("staffLoginForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("staffEmail").value.trim();
+    const pass = document.getElementById("staffPassword").value;
+    const lockId = "staff:" + email;
+    const mins = KII.isLocked(lockId);
+    if (mins) return showAlert(`Too many failed attempts. Please try again in ${mins} minute(s).`);
+    const staff = amsFindStaff(email);
+    if (!staff || !KII.checkPassword(staff, pass)) {
+      KII.recordFail(lockId);
+      return showAlert("Invalid staff email or password.");
+    }
+    if (!staff.active)
+      return showAlert("Your account has been restricted. Please contact the Administration Manager.");
+    KII.clearFails(lockId);
+    if (!staff.passHash) amsUpdateStaff(staff.id, { ...amsPwFields(pass), password: undefined });
+    amsUpdateStaff(staff.id, { lastLogin: new Date().toISOString() });
+    amsAudit(staff.name, "Signed in", staff.email);
+    amsStaffLogin(staff.id);
+    window.location.href = staff.mustChangePassword ? "admin.html?v=settings&pw=1" : "admin.html";
+  });
+</script>
+</body>
+</html>

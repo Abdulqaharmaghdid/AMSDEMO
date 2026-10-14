@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMS — KII Application Management System</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div class="ams-shell">
+
+  <aside class="ams-side">
+    <div class="ams-logo">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c0-6 2-10 8-13-1 7-3 11-8 13z"/>
+          <path d="M12 21c0-6-2-10-8-13 1 7 3 11 8 13z"/>
+          <path d="M12 21v-6"/>
+        </svg>
+      </div>
+      <div class="txt">KII<small>KURDISTAN INNOVATION INSTITUTE</small></div>
+    </div>
+    <nav class="ams-nav" id="amsNav"></nav>
+    <div class="side-hero">
+      <svg class="mtn" viewBox="0 0 200 90" preserveAspectRatio="none">
+        <path d="M0 90 L45 35 L75 62 L110 20 L150 58 L180 38 L200 55 V90 Z" fill="rgba(255,255,255,.14)"/>
+        <path d="M0 90 L35 55 L70 75 L115 42 L160 70 L200 50 V90 Z" fill="rgba(255,255,255,.10)"/>
+      </svg>
+      <div class="hero-txt">Innovation<br>today for a<br><span>brighter tomorrow</span></div>
+    </div>
+  </aside>
+
+  <div class="ams-main">
+    <div class="ams-top">
+      <div class="tt">
+        <h2>Application Management System</h2>
+        <small>Innovative People. A Stronger Kurdistan.</small>
+      </div>
+      <div class="search"><input type="text" id="globalSearch" placeholder="Search applicants, meetings, documents…"></div>
+      <div class="notif-wrap">
+        <button class="bell" id="bellBtn" title="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 20a2 2 0 0 1-3.4 0"/>
+          </svg><i id="bellCount">0</i>
+        </button>
+        <div class="notif-drop hidden" id="notifDrop"></div>
+      </div>
+      <div class="ams-user" id="userMenu">
+        <div class="avatar" id="userAvatar"></div>
+        <div class="who"><span id="userName"></span><small id="userRole"></small></div>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        <div class="menu hidden" id="userMenuDrop">
+          <a href="?v=settings">Profile settings</a>
+          <a href="#" id="logoutBtn">Sign out</a>
+        </div>
+      </div>
+    </div>
+    <div class="ams-content" id="amsContent"></div>
+    <footer class="ams-foot">
+      <span>© 2025 Kurdistan Innovation Institute (KII). All rights reserved.</span>
+      <span>Building Innovation. Empowering People. Strengthening Kurdistan.</span>
+    </footer>
+  </div>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/ams.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

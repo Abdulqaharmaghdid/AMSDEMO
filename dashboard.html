@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — KII Innovation Program</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">KII <span>Innovation Program</span></div>
+  <nav>
+    <span id="userName" style="margin-right:16px; font-size:.9rem;"></span>
+    <a href="#" id="logoutLink">Sign Out</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <!-- Step 1: choose category -->
+  <div class="card" id="categoryCard">
+    <h1>Select Your Category</h1>
+    <p class="sub">Choose the innovation category for your application. This starts your application.</p>
+    <div class="cat-grid" id="catGrid"></div>
+    <button class="btn" id="startBtn" disabled>Start Application</button>
+  </div>
+
+  <!-- Step 2: application summary -->
+  <div class="card hidden" id="appCard">
+    <h1>My Application</h1>
+    <p class="sub">Your application details.</p>
+    <div id="noticeBox"></div>
+
+    <div class="detail-row"><span class="k">Applicant</span><span class="v" id="dApplicant"></span></div>
+    <div class="detail-row"><span class="k">Category</span><span class="v" id="dCategory"></span></div>
+    <div class="detail-row"><span class="k">Started Date</span><span class="v" id="dStarted"></span></div>
+    <div class="detail-row"><span class="k">Status</span><span class="v"><span class="badge" id="dStatus"></span></span></div>
+    <div class="detail-row"><span class="k">Review Season</span><span class="v" id="dSeason"></span></div>
+    <div class="detail-row"><span class="k">Completion</span><span class="v" id="dCompletion"></span></div>
+
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-label" id="progressLabel"></div>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-danger" id="cancelBtn">Cancel Application</button>
+      <button class="btn" id="openBtn">Open Application</button>
+    </div>
+  </div>
+
+  <!-- Step 3: progress, tasks, messages -->
+  <div id="trackerWrap" class="hidden">
+    <div class="card">
+      <h1>Application Progress</h1>
+      <p class="sub">Your application's current stage in the KII review workflow.</p>
+      <div class="stepper" id="stageStepper"></div>
+      <div class="detail-row"><span class="k">Current stage</span><span class="v" id="dStage">—</span></div>
+      <div class="detail-row"><span class="k">Outcome</span><span class="v" id="dOutcome">—</span></div>
+    </div>
+
+    <div class="card hidden" id="msCard">
+      <h1>Project Milestones</h1>
+      <p class="sub">Submit a progress report for each milestone. Funding tranches are released after KII approves your report.</p>
+      <div id="msList"></div>
+    </div>
+
+    <div class="card">
+      <h1>Tasks from KII Team</h1>
+      <p class="sub">Tasks assigned to you by the evaluation team — tick them when completed.</p>
+      <div id="taskList"></div>
+    </div>
+
+    <div class="card">
+      <h1>Notifications</h1>
+      <p class="sub">Messages and email notifications sent to you.</p>
+      <div id="notifList"></div>
+    </div>
+
+    <div class="card">
+      <h1>Chat — KII Evaluation Team</h1>
+      <div class="chat-box" id="chatBox"></div>
+      <form id="chatForm" class="chat-form">
+        <input type="text" name="text" placeholder="Write a message to the KII team…" required>
+        <button class="btn">Send</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/ams.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
